@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -38,6 +39,32 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+
+player = Player("Neytorokx", room['outside']);
+
+running = True;
+
+while running:
+    playerInput = input("Enter a direction: ");
+    if "north" in playerInput:
+        player.setRoom(player.getRoom().n_to);
+        print("North: " + player.getRoom().getName() + " ");
+        print(player.getRoom().getDesc());
+    elif "south" in playerInput:
+        player.setRoom(player.getRoom().s_to);
+        print("South: " + player.getRoom().getName() + " ");
+        print(player.getRoom().getDesc());
+    elif "east" in playerInput:
+        player.setRoom(player.getRoom().e_to);
+        print("East: " + player.getRoom().getName() + " ");
+        print(player.getRoom().getDesc());
+    elif "west" in playerInput:
+        player.setRoom(player.getRoom().w_to);
+        print("West: " + player.getRoom().getName() + " ");
+        print(player.getRoom().getDesc());
+    elif "exit" in playerInput:
+        print("Exiting...");
+        running = False;
 
 # Write a loop that:
 #
